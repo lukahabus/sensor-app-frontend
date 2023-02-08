@@ -17,7 +17,7 @@ export class SensorsComponent implements OnInit {
 
   sensors: ISensor[] = [];
 
-  displayedColumns: string[] = ['id', 'sensorType', 'rangeStart', 'rangeEnd', 'value'];
+  displayedColumns: string[] = ['id', 'sensorType', 'rangeStart', 'rangeEnd', 'value', 'details'];
 
   constructor(private sensorsService: SensorsService, private router: Router) { }
 

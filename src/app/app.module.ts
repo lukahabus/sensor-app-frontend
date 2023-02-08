@@ -7,11 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SensorsComponent } from './sensors/sensors.component';
 import { MaterialModule } from './shared/material.module';
 import { HttpClientModule } from '@angular/common/http';
+import { SensorDetailsComponent } from './sensor-details/sensor-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SensorsComponent
+    SensorsComponent,
+    SensorDetailsComponent
   ],
   imports: [
     BrowserModule,
