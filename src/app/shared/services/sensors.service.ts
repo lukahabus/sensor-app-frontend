@@ -42,7 +42,6 @@ export class SensorsService {
   }
 
   modifySensor(modifiedSensor: ISensor): Observable<any> {
-    debugger;
     const url = `${apiUrl}api/sensors`;
 
     return this.http.put(url, modifiedSensor)
@@ -59,6 +58,11 @@ export class SensorsService {
           console.log('getSensorsDropdown: ' + JSON.stringify(data));
         })
       );
+  }
+
+  deleteSensor(id: number): Observable<ISensor> {
+    const url = `${apiUrl}api/sensors/${id}`;
+    return this.http.delete<ISensor>(url);
   }
 
   private handleError(err: HttpErrorResponse) {

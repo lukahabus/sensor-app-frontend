@@ -17,7 +17,7 @@ export class SensorsComponent implements OnInit {
 
   sensors: ISensor[] = [];
 
-  displayedColumns: string[] = ['id', 'sensorType', 'rangeStart', 'rangeEnd', 'value', 'details'];
+  displayedColumns: string[] = ['id', 'sensorType', 'rangeStart', 'rangeEnd', 'value', 'details', 'delete'];
 
   constructor(private sensorsService: SensorsService, private router: Router) { }
 
@@ -36,9 +36,13 @@ export class SensorsComponent implements OnInit {
     })
   }
 
-  onDetailsClick(sensorId: number){
+  onDetailsClick(sensorId: number) {
     this.router.navigate(
       ['/sensors', sensorId]
     )
+  }
+
+  onDeleteClick(sensorId: number) {
+    this.sensorsService.deleteSensor(sensorId).subscribe(() => this.ngOnInit());
   }
 }
