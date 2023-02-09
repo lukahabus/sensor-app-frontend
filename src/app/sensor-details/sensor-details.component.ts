@@ -9,8 +9,9 @@ import { SensorsService } from '../shared/services/sensors.service';
   styleUrls: ['./sensor-details.component.scss']
 })
 export class SensorDetailsComponent implements OnInit {
+  sensors : ISensor[] = [];
 
-  sensor: ISensor | undefined;
+  displayedColumns: string[] = ['id', 'sensorType', 'rangeStart', 'rangeEnd', 'value'];
 
   constructor(private route: ActivatedRoute, private sensorsService: SensorsService) {}
 
@@ -18,9 +19,10 @@ export class SensorDetailsComponent implements OnInit {
     let sensorId = this.route.snapshot.paramMap.get('id');
     if(sensorId != null) {
       this.sensorsService.getSensor(+sensorId).subscribe((sensor: ISensor) =>{
-        this.sensor = sensor;
+        let sensorsTemp : ISensor[] = [];
+        sensorsTemp.push(sensor);
+        this.sensors = [...sensorsTemp];
       })
     }
   }
-
 }
