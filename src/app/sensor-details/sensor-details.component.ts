@@ -11,7 +11,7 @@ import { SensorsService } from '../shared/services/sensors.service';
 export class SensorDetailsComponent implements OnInit {
   sensors : ISensor[] = [];
 
-  displayedColumns: string[] = ['id', 'sensorType', 'rangeStart', 'rangeEnd', 'value'];
+  displayedColumns: string[] = ['id', 'sensorType', 'rangeStart', 'rangeEnd', 'value', 'delete'];
 
   constructor(private route: ActivatedRoute, private sensorsService: SensorsService) {}
 
