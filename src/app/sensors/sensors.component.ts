@@ -17,11 +17,15 @@ export class SensorsComponent implements OnInit {
 
   sensors: ISensor[] = [];
 
-  displayedColumns: string[] = ['id', 'sensorType', 'rangeStart', 'rangeEnd', 'value', 'details', 'delete'];
+  displayedColumns: string[] = ['id', 'sensorType', 'rangeStart', 'rangeEnd', 'value', 'details', 'delete', 'add'];
 
   constructor(private sensorsService: SensorsService, private router: Router) { }
 
   ngOnInit(): void {
+    this.getAllSensors();
+  }
+
+  getAllSensors() {
     this.sensorsService.getSensors().subscribe({
       next: sensors => {
         this.sensors = sensors;
@@ -43,6 +47,26 @@ export class SensorsComponent implements OnInit {
   }
 
   onDeleteClick(sensorId: number) {
-    this.sensorsService.deleteSensor(sensorId).subscribe(() => this.ngOnInit());
+    this.sensorsService.deleteSensor(sensorId).subscribe(() => this.getAllSensors());
+  }
+
+  onAddClick(id: number) {
+    const sensor = this.sensorsService.getSensor(id).subscribe({
+      next(s) {
+        console.log(s);
+
+      }
+
+    });
+    //console.log(sensor);
+
+    // sensor.subscribe({
+    //   next(s) {
+    //     //console.log(s);
+
+    //   }
+    // })
+
+    //this.sensorsService.addSensor(sensor).subscribe(() => this.getAllSensors());
   }
 }

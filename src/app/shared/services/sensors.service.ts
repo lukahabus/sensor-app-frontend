@@ -12,6 +12,8 @@ const apiUrl = environment.apiUrl;
 })
 export class SensorsService {
 
+  private idCount = 0;
+
   constructor(private http: HttpClient) { }
 
   getSensors(): Observable<ISensor[]> {
@@ -47,6 +49,15 @@ export class SensorsService {
     return this.http.put(url, modifiedSensor)
       .pipe(
         tap(taskResponse => console.log('modifySensor op has been successfully finished'))
+      );
+  }
+
+  addSensor(newSensor: ISensor): Observable<any> {
+    const url = `${apiUrl}api/sensors`;
+
+    return this.http.post(url, newSensor)
+      .pipe(
+        tap(taskResponse => console.log('addSensor op has been successfully finished'))
       );
   }
 
