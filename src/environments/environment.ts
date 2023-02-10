@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://localhost:7119/'
+  apiUrl: 'https://localhost:7119/',
+  sender: "habusluka@gmail.com",
+  receiver: "" //TODO: Add Receiver
 };
 
 /*

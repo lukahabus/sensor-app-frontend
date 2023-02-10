@@ -71,9 +71,13 @@ export class SensorsService {
       );
   }
 
-  deleteSensor(id: number): Observable<ISensor> {
-    const url = `${apiUrl}api/sensors/${id}`;
-    return this.http.delete<ISensor>(url);
+  // deleteSensor(id: number): Observable<ISensor> {
+  //   const url = `${apiUrl}api/sensors/${id}`;
+  //   return this.http.delete<ISensor>(url);
+  // }
+
+  deleteSensor(id: number) {
+    return this.http.delete<ISensor>(`${apiUrl}api/sensors/${id}`);
   }
 
   private handleError(err: HttpErrorResponse) {
