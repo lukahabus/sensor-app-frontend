@@ -1,5 +1,4 @@
 export interface IDropdown {
-  id: number;
-  sensorType: string;
   value: number;
+  label: string;
 }

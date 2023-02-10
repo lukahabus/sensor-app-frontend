@@ -8,6 +8,7 @@ import { SensorsComponent } from './sensors/sensors.component';
 import { MaterialModule } from './shared/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SensorDetailsComponent } from './sensor-details/sensor-details.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,10 +18,11 @@ import { SensorDetailsComponent } from './sensor-details/sensor-details.componen
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule,
-    HttpClientModule
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

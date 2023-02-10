@@ -1,8 +1,8 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ISensor } from '../shared/models/ISensor';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SensorsService } from '../shared/services/sensors.service';
+import { ISensor } from '../shared/models/ISensor';
 
 @Component({
   selector: 'app-sensors',
@@ -19,10 +19,14 @@ export class SensorsComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'sensorType', 'rangeStart', 'rangeEnd', 'value', 'details', 'delete', 'add'];
 
-  constructor(private sensorsService: SensorsService, private router: Router) { }
+  constructor(private router: Router, private sensorsService: SensorsService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getAllSensors();
+
+    this.activatedRoute.data.subscribe((data) => {
+      this.sensors = data['sensors'];
+    })
   }
 
   getAllSensors() {

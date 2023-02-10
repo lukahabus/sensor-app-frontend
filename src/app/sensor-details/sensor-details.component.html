@@ -1,4 +1,50 @@
-<table mat-table [dataSource]="sensors" class="mat-elevation-z8">
+<div style="display: flex;">
+  <div *ngIf="sensor" class="main-container">
+      <h2>Sensor Details</h2>
+      <form class="form-container" (ngSubmit)="onSubmit()" #sensorForm="ngForm">
+          <mat-form-field appearance="fill">
+              <mat-label>ID</mat-label>
+              <input readonly matInput #id="ngModel" [(ngModel)]="sensor.id" name="id">
+          </mat-form-field>
+
+          <!-- <mat-form-field appearance="fill">
+              <mat-label>Release date</mat-label>
+              <input readonly matInput [matDatepicker]="picker" [(ngModel)]="movie.releaseDate" name="releaseDate"
+                  (click)="picker.open()">
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+              <mat-label>Duration</mat-label>
+              <input matInput type="number" min="1" #duration="ngModel" [(ngModel)]="movie.duration" name="duration">
+              <mat-error *ngIf="duration.invalid">
+                  Duration must be greater than 0
+              </mat-error>
+          </mat-form-field> -->
+
+          <mat-form-field appearance="fill">
+              <mat-label>Main Actor</mat-label>
+              <mat-select [(ngModel)]="sensor.id" name="actorId">
+                  <mat-option *ngFor="let actor of actors" [value]="actor.value">
+                      {{actor.label}}
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
+
+          <div class="button-container">
+              <button type="submit" style="margin-left: 1rem;" mat-raised-button color="accent"
+                  [disabled]="!sensorForm.form.valid">Submit</button>
+              <button type="button" mat-raised-button (click)="goBack()">Go Back</button>
+          </div>
+      </form>
+  </div>
+
+  <!-- <app-actor-details class="main-container" *ngIf="movie" [actorId]="movie.actorId"
+      (refreshEvent)="refreshEvent()"></app-actor-details> -->
+</div>
+
+<!-- <table mat-table [dataSource]="sensors" class="mat-elevation-z8">
   <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> Id </th>
       <td mat-cell *matCellDef="let element"> {{element.id}} </td>
@@ -29,4 +75,4 @@
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-</table>
+</table> -->
